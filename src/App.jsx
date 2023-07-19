@@ -7,39 +7,24 @@ const App = () => {
   const { image, job, name, text } = reviewsData[index];
 
   const nextBtn = () => {
-    if (index === reviewsData.length - 1) {
-      setIndex(0);
-    } else {
-      setIndex((currentIndex) => {
-        const newIndex = currentIndex + 1;
-        return newIndex;
-      });
-    }
+    setIndex((currentIndex) => {
+      const newIndex = (currentIndex + 1) % reviewsData.length;
+      return newIndex;
+    });
   };
 
   const prevBtn = () => {
-    if (index === 0) {
-      setIndex(3);
-    } else {
-      setIndex((currentIndex) => {
-        const newIndex = currentIndex - 1;
-        return newIndex;
-      });
-    }
+    setIndex((currentIndex) => {
+      const newIndex = (currentIndex - 1) % reviewsData.length;
+      return newIndex;
+    });
   };
 
   const randomReview = () => {
     setIndex(() => {
-      const randomNumber = Math.floor(Math.random() * reviewsData.length);
-      if (randomNumber === index) {
-        if (index === reviewsData.length - 1) {
-          return 0;
-        } else {
-          return randomNumber + 1;
-        }
-      } else {
-        return randomNumber;
-      }
+      const randomNumber =
+        Math.floor(Math.random() * reviewsData.length) % reviewsData.length;
+      return randomNumber;
     });
   };
 

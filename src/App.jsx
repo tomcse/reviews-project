@@ -15,7 +15,8 @@ const App = () => {
 
   const prevBtn = () => {
     setIndex((currentIndex) => {
-      const newIndex = (currentIndex - 1) % reviewsData.length;
+      const newIndex =
+        (currentIndex - 1 + reviewsData.length) % reviewsData.length;
       return newIndex;
     });
   };
